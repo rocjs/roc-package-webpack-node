@@ -4,6 +4,8 @@ export default {
             watch: [
                 'roc.config.js',
             ],
+            inspect: false,
+            'debug-brk': false,
         },
 
         build: {

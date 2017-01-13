@@ -84,7 +84,17 @@ export default function server(compiler) {
                 ROC_NODE_DEV_ENTRY: bundlePath,
             };
             // env - use it for the entry file
-            serverProcess = childProcess.fork(require.resolve('./wrapper'), { env });
+
+            const execArgv = process.execArgv;
+            if (settings.inspect) {
+                execArgv.push('--inspect');
+            }
+            if (settings['debug-brk']) {
+                execArgv.push('--debug-brk');
+            }
+
+            serverProcess = childProcess.fork(require.resolve('./wrapper'),
+                { env, execArgv });
 
             // Make sure or node process is terminated when the main process is
             process.on('exit', () => stopServer());
