@@ -3,8 +3,11 @@ import path from 'path';
 import { getSettings } from 'roc';
 import webpack from 'webpack';
 
+import { invokeHook } from '../roc/util';
+
 export default ({ previousValue: webpackConfig }) => (target) => {
-    if (target === 'node') {
+    const nodeTargets = invokeHook('get-webpack-node-targets');
+    if (nodeTargets.indexOf(target) !== -1) {
         return () => {
             const newWebpackConfig = { ...webpackConfig };
             const buildSettings = getSettings('build');

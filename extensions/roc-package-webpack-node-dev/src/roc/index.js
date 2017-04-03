@@ -1,4 +1,5 @@
 import { lazyFunctionRequire } from 'roc';
+import { isString, isArray } from 'roc/validators';
 
 import config from '../config/roc.config.js';
 import meta from '../config/roc.config.meta.js';
@@ -45,6 +46,12 @@ export default {
                     description: 'The server process that is being stopped.',
                 },
             },
+        },
+        'get-webpack-node-targets': {
+            description: 'Used to inform which targets should be considered Webpack "node" targets. ' +
+                'Actions should concat the previousValue to build the complete value.',
+            initialValue: ['node'],
+            returns: isArray(isString),
         },
     },
 };
