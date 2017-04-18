@@ -86,10 +86,10 @@ export default function server(compiler) {
             // env - use it for the entry file
 
             const execArgv = process.execArgv;
-            if (settings.inspect) {
+            if (settings.inspect.enable) {
                 execArgv.push('--inspect');
             }
-            if (settings['debug-brk']) {
+            if (settings.inspect['debug-brk']) {
                 execArgv.push('--debug-brk');
             }
 

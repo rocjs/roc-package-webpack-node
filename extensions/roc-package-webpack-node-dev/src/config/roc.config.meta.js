@@ -14,12 +14,14 @@ export default {
                 validator: required(oneOf(isPath, isArray(isPath))),
             },
             inspect: {
-                description: 'Enable V8 inspector',
-                validator: isBoolean,
-            },
-            'debug-brk': {
-                description: 'Break on first line when V8 inspector is enabled',
-                validator: isBoolean,
+                enable: {
+                    description: 'Enable V8 inspector',
+                    validator: isBoolean,
+                },
+                'debug-brk': {
+                    description: 'Break on first line when V8 inspector is enabled',
+                    validator: isBoolean,
+                },
             },
             build: {
                 targets: {

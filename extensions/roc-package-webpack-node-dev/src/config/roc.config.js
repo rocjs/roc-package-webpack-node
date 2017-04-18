@@ -4,10 +4,11 @@ export default {
             watch: [
                 'roc.config.js',
             ],
-            inspect: false,
-            'debug-brk': false,
+            inspect: {
+                enable: false,
+                'debug-brk': false,
+            },
         },
-
         build: {
             targets: ['node'],
         },
